@@ -13,7 +13,64 @@ function Projects(){const[filter,setFilter]=useState('All');const filters=['All'
 function Journey(){return <section id="journey" className="journey section"><Stars count={35}/><div className="section-wrap"><Reveal><div className="section-label">03 / THE ROAD SO FAR</div><h2>Every little thing<br/><em>led somewhere.</em></h2><p className="section-sub">Not a straight line. Probably never will be.</p></Reveal><div className="timeline">{milestones.map((m,i)=><Reveal key={m.year} className="milestone" delay={i*.05}><div className="mile-icon">{m.icon}</div><div className="mile-year">{m.year}</div><h3>{m.title}</h3><p>{m.description}</p></Reveal>)}</div></div></section>}
 function Skills(){const skills=[['Languages','C, Python, JavaScript, TypeScript'],['Web & interfaces','React, HTML, CSS, Three.js'],['Design & modelling','FreeCAD, 3D CAD, technical drawing'],['Data & tools','SQLite, Git, CSV workflows'],['Exploring next','Aerospace, simulation, electronics']];return <section id="skills" className="skills section"><div className="section-wrap skills-grid"><Reveal><div className="section-label">04 / THE TOOLBOX</div><h2>Tools to turn<br/><em>ideas into things.</em></h2><p className="lead">A growing collection of languages, tools and ways to solve problems. I'm more interested in what I can build with them than in collecting badges.</p><div className="skills-decoration"><Code2 size={76}/><span>always learning<br/>always experimenting ✳</span></div></Reveal><Reveal className="skills-list" delay={.12}>{skills.map(([label,value],i)=><div className="skill-row" key={label}><span className="skill-index">0{i+1}</span><div><h3>{label}</h3><p>{value}</p></div><span className="skill-star">✳</span></div>)}</Reveal></div></section>}
 function Beyond(){return <section id="beyond" className="beyond section"><Stars count={75}/><div className="planet-large"/><div className="section-wrap beyond-inner"><Reveal><div className="section-label">05 / LOOKING UP</div><h2>Some dreams<br/>are <em>way up there.</em></h2><p className="lead">Aerospace engineering is where a lot of my curiosity points. I want to understand flight, propulsion and the systems that might take us further.</p><p>One long-term ambition is to build an aerospace venture: <strong>ASTRA</strong> — Aryavarta Space Technology and Research Agency. For now, I'm learning, designing and making the next thing.</p><div className="future-chip"><Orbit size={18}/> The future is a work in progress</div></Reveal><div className="rocket" aria-hidden="true">✦<span>↗</span></div></div></section>}
-function Contact(){const[email,setEmail]=useState(false);return <section id="contact" className="contact section"><div className="section-wrap contact-inner"><Reveal><div className="section-label">06 / YOUR TURN</div><h2>Let's make<br/><em>something cool.</em></h2><p className="lead">Have an idea, a question, or something interesting to share? I'd love to hear about it.</p><div className="contact-actions"><a className="btn primary" href="mailto:hello@kumarakhilesh.com.np?subject=Hello%20Kumar">Say hello <Mail size={18}/></a><button className="btn ghost" onClick={async()=>{await navigator.clipboard.writeText('hello@kumarakhilesh.com.np');setEmail(true);setTimeout(()=>setEmail(false),2500)}}>{email?<Check size={18}/>:<Mail size={18}/>} {email?'Copied!':'Copy email'}</button></div><p className="contact-caveat">Email address is a placeholder — update it before publishing.</p></Reveal><div className="paper-plane" aria-hidden="true">✈<span>✦</span></div></div><footer><div className="footer-inner"><span className="footer-logo">ka✳</span><span>Made with curiosity, somewhere in Nepal.</span><a href="#home" onClick={e=>{e.preventDefault();scroll('home')}}>Back to the beginning ↑</a><span>© {new Date().getFullYear()} Kumar Akhilesh</span></div></footer></section>}
+
+const socials = [
+  { name: 'YouTube', handle: '@bnnn47',
+    url: 'https://youtube.com/@bnnn47', icon: 'youtube' },
+  { name: 'Facebook', handle: 'theykallmekumar',
+    url: 'https://facebook.com/theykallmekumar', icon: 'facebook-f' },
+  { name: 'Instagram', handle: '@theykallmekumar',
+    url: 'https://instagram.com/theykallmekumar', icon: 'instagram' },
+  { name: 'Threads', handle: '@theykallmekumar',
+    url: 'https://www.threads.net/@theykallmekumar', icon: 'threads' },
+  { name: 'TikTok', handle: '@theykallmekumar',
+    url: 'https://www.tiktok.com/@theykallmekumar', icon: 'tiktok' },
+  { name: 'Snapchat', handle: '@theykallmekumar',
+    url: 'https://www.snapchat.com/add/theykallmekumar', icon: 'snapchat' },
+  { name: 'X / Twitter', handle: '@theykallmekumar',
+    url: 'https://x.com/theykallmekumar', icon: 'x-twitter' },
+  { name: 'Telegram', handle: '@acerandjones',
+    url: 'https://t.me/acerandjones', icon: 'telegram' },
+  { name: 'GitHub', handle: '@begin8',
+    url: 'https://github.com/begin8', icon: 'github' },
+  { name: 'LinkedIn', handle: 'theykallmekumar',
+    url: 'https://www.linkedin.com/in/theykallmekumar/', icon: 'linkedin-in' }
+];
+
+function SocialLinks() {
+  return (
+    <div className="social-universe">
+      <div className="social-heading">
+        <span className="section-label">AROUND THE INTERNET ✳</span>
+        <p>Different corners of the internet. Same curious human.</p>
+      </div>
+
+      <div className="social-grid">
+        {socials.map((social, index) => (
+          <a
+            key={social.name}
+            className="social-tile"
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit my ${social.name} profile`}
+            style={{ '--i': index } as React.CSSProperties}
+          >
+            <span className="social-icon">
+              <i className={`fa-brands fa-${social.icon}`} aria-hidden="true" />
+            </span>
+            <span className="social-info">
+              <strong>{social.name}</strong>
+              <small>{social.handle}</small>
+            </span>
+            <ArrowUpRight size={16} className="social-arrow" />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+function Contact(){const[email,setEmail]=useState(false);return <section id="contact" className="contact section"><div className="section-wrap contact-inner"><Reveal><div className="section-label">06 / YOUR TURN</div><h2>Let's make<br/><em>something cool.</em></h2><p className="lead">Have an idea, a question, or something interesting to share? I'd love to hear about it.</p><div className="contact-actions"><a className="btn primary" href="mailto:hello@kumarakhilesh.com.np?subject=Hello%20Kumar">Say hello <Mail size={18}/></a><button className="btn ghost" onClick={async()=>{await navigator.clipboard.writeText('hello@kumarakhilesh.com.np');setEmail(true);setTimeout(()=>setEmail(false),2500)}}>{email?<Check size={18}/>:<Mail size={18}/>} {email?'Copied!':'Copy email'}</button></div><SocialLinks/><p className="contact-caveat">Email address is a placeholder — update it before publishing.</p></Reveal><div className="paper-plane" aria-hidden="true">✈<span>✦</span></div></div><footer><div className="footer-inner"><span className="footer-logo">ka✳</span><span>Made with curiosity, somewhere in Nepal.</span><a href="#home" onClick={e=>{e.preventDefault();scroll('home')}}>Back to the beginning ↑</a><span>© {new Date().getFullYear()} Kumar Akhilesh</span></div></footer></section>}
 function Detail({project}:{project:Project}){return <div className="detail-page"><Header/><div className="detail-hero"><Stars count={25}/><div className="section-wrap"><a className="back" href="#projects"><ArrowLeft size={17}/> All projects</a><div className="section-label">PROJECT {project.number} / {project.category.toUpperCase()}</div><h1>{project.title}<span> ✳</span></h1><p>{project.subtitle}</p><div className={'detail-illustration '+project.gradient}><span>{project.emoji}</span><div className="art-ring"/></div></div></div><main className="detail-content section-wrap"><div className="detail-main"><div className="section-label">THE IDEA</div><h2>What is it?</h2><p className="lead">{project.overview}</p><h2>What it does</h2><ul>{project.features.map(x=><li key={x}><Check size={18}/>{x}</li>)}</ul><h2>What I learned / worked through</h2><ul>{project.challenges.map(x=><li key={x}><Sparkles size={18}/>{x}</li>)}</ul><div className="detail-note"><strong>Project media</strong><p>Replace this illustrated cover with authentic screenshots, diagrams, demo videos and repository links when available. None have been fabricated.</p></div></div><aside className="detail-aside"><div className="aside-block"><span>STATUS</span><strong>{project.status}</strong></div><div className="aside-block"><span>YEAR</span><strong>{project.year}</strong></div><div className="aside-block"><span>TOOLS & TECHNOLOGIES</span><div className="tags">{project.stack.map(t=><span key={t}>{t}</span>)}</div></div><a className="btn ghost" href="#projects">Browse other projects <ArrowRight size={17}/></a></aside></main><div className="next-project section-wrap">{(()=>{const p=projects[(projects.indexOf(project)+1)%projects.length];return <a href={'#project/'+p.slug}><span>NEXT PROJECT ↗</span><h2>{p.title} <ArrowUpRight/></h2></a>})()}</div><footer className="detail-footer">© {new Date().getFullYear()} Kumar Akhilesh · Made with curiosity</footer></div>}
 function App(){const hash=useHash();const slug=hash.startsWith('#project/')?hash.slice(9):null;const p=projects.find(x=>x.slug===slug);useEffect(()=>{if(!slug&&hash.length>1){const id=hash.slice(1);setTimeout(()=>document.getElementById(id)?.scrollIntoView(),60)}},[hash,slug]);return p?<Detail project={p}/>:<><Header/><main><Hero/><About/><Projects/><Journey/><Skills/><Beyond/><Contact/></main></>};
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
