@@ -194,3 +194,27 @@
     transform: none;
   }
 }
+
+
+/* Personal photograph inside the Polaroid */
+
+.postcard-art {
+  position: relative;
+  overflow: hidden;
+}
+
+.postcard-art .about-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide the old illustration if still present */
+.postcard-sun,
+.postcard-hills {
+  display: none;
+}
