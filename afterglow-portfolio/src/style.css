@@ -218,3 +218,23 @@
 .postcard-hills {
   display: none;
 }
+
+
+/* Fix hero name spacing and sizing on mobile portrait screens */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(3.2rem, 12vw, 5.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+  }
+
+  .hero h1 em {
+    display: inline-block;
+    font-style: normal;
+  }
+
+  .hero h1 .scribble {
+    font-size: 0.35em;
+    vertical-align: top;
+  }
+}
